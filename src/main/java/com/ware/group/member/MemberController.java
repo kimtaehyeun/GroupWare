@@ -36,15 +36,15 @@ public class MemberController {
 
 	@Autowired
 	private MemberService memberService;
-	
+
 	@Autowired
 	private ScheduleService employeeService;
 	@Autowired
 	private DepartmentService departmentService;
 	@Autowired
 	private MemberDAO memberDAO;
-	
-	
+
+
 	CommonVO commonVO = new CommonVO();
 
 	@GetMapping("memberList")
@@ -52,36 +52,36 @@ public class MemberController {
 		List<MemberVO> ar = memberService.getMemberList();
 		memberVO = memberService.getSessionAttribute(session);
 		mv.addObject("memberVO", memberVO);
-		
+
 		mv.addObject("memberVOs", ar);
 		return mv;
 	}
-	
+
 	@GetMapping("join")
 	public ModelAndView setMemberJoin(@ModelAttribute MemberVO memberVO, ModelAndView mv)throws Exception{
-		
+
 		List<DepartmentVO> departmentVOs =   departmentService.getDepartmentList();
 		List<JobVO> jobVOs = memberService.getJobList();
 		mv.addObject("jobVOs", jobVOs);
 		mv.addObject("departmentVOs", departmentVOs);
-		
+
 		mv.setViewName("member/join");
 		return mv;
-		
+
 	}
-	
+
 	@PostMapping("join")
 	public ModelAndView setMemberJoin(ModelAndView mv, @Valid MemberVO memberVO, BindingResult bindingResult,WorkTimeVO workTimeVO)throws Exception{
 
 		boolean check  = memberService.pwCheck(memberVO, bindingResult);
 		if(check) {
-			
+
 			mv.setViewName("member/join");
-			
+
 			return mv; 
 		}
 		int result = memberService.setMemeberJoin(memberVO,bindingResult, workTimeVO);
-		
+
 		commonVO.setMsg("계정을 생성할 수 없습니다.");
 		commonVO.setUrl("/member/join");
 		commonVO.setTextMsg("다시 확인해주세요.");
@@ -92,20 +92,20 @@ public class MemberController {
 		mv.addObject("commonVO",commonVO);
 		mv.addObject("result", result);
 		mv.setViewName("member/memberAlert");
-		
-		
+
+
 		return mv;
 	}
- 
+
 	@PostMapping("jobDelete")
 	@ResponseBody
 	public int setJobDelete(JobVO jobVO)throws Exception{
 		return memberService.setJobDelete(jobVO);
-		
+
 	}
 	@GetMapping("login")
 	public ModelAndView getLogin(ModelAndView mv, HttpSession session)throws Exception{
-	
+		// 근태받기
 		MemberVO memberVO = memberService.getSessionAttribute(session);
 		if(memberVO!=null) {
 			int result = 0;
@@ -125,9 +125,9 @@ public class MemberController {
 		memberVO =memberService.getMemberDetail(memberVO);
 		List<DepartmentVO> departmentVOs =   departmentService.getDepartmentList();
 		List<JobVO> jobVOs = memberService.getJobList();
- 
+
 		List<EmployeeStatusVO> employeeStatusVOs =  memberService.getEmployeeStatusList(memberVO);
-		
+
 		mv.addObject("employeeStatusVOs", employeeStatusVOs);
 		mv.addObject("jobVOs", jobVOs);
 		mv.addObject("departmentVOs", departmentVOs);
@@ -153,43 +153,43 @@ public class MemberController {
 
 		return mv;
 	}
-	
+
 	@GetMapping("profile")
 	public ModelAndView getProfile(@ModelAttribute MemberVO memberVO, ModelAndView mv,HttpSession session)throws Exception{
 		memberVO=memberService.getSessionAttribute(session);
-				memberVO = memberService.getMemberDetail(memberVO);
-		
+		memberVO = memberService.getMemberDetail(memberVO);
+
 		mv.addObject("memberVO", memberVO);
 		mv.setViewName("member/profile");
 		return mv;
-		
+
 	}
 	@PostMapping("memberProfileAdd")
 	public ModelAndView setProfile(ModelAndView mv,MemberProfileVO memberProfileVO,HttpSession session,MultipartFile file)throws Exception{
-		
+
 		int result =memberService.setProfileAdd(memberProfileVO, session, file);
-		
-		
+
+
 		commonVO.setMsg("프로필을 변경할 수 없습니다.");
 		commonVO.setUrl("/member/profile");
-		
+
 		commonVO.setTextMsg("");
 		if(result>0) {
 			commonVO.setMsg("프로필을 변경하였습니다.");
-			
+
 		}
-		
+
 
 		mv.addObject("commonVO",commonVO);
 		mv.addObject("result", result);
 		mv.setViewName("member/memberAlert");
 		return mv;
 	}
-	
-	 
+
+	//ajax용
 	@GetMapping("detail")
 	public ModelAndView getMemberDetail(@ModelAttribute MemberVO memberVO,ModelAndView mv)throws Exception{
-		
+
 		memberVO = memberService.getMemberDetail(memberVO);
 		mv.addObject("memberVO", memberVO);
 		mv.setViewName("member/memberDetailResult");
@@ -197,30 +197,30 @@ public class MemberController {
 	}
 	@GetMapping("leaveRecode")
 	public ModelAndView getLeaveRecode(ModelAndView mv,MemberVO memberVO,HttpSession session,AnnualVO annualVO)throws Exception{
-		
+
 		memberVO = memberService.getMemberDetail(memberService.getSessionAttribute(session));
 		mv.addObject("memberVO",memberVO);
-		
-		
+
+
 		return mv;
 	}
-	
+
 	@GetMapping("security")
 	public ModelAndView getSecurity(@ModelAttribute MemberVO memberVO, ModelAndView mv,HttpSession session)throws Exception{
 
 		memberVO = memberService.getMemberProfile(memberVO, session);
-		
+
 		mv.addObject("memberVO", memberVO);
 		mv.setViewName("member/security");
 		return mv;
 	}
-	
+
 	@PostMapping("security")
 	public ModelAndView setPasswordUpdate(ModelAndView mv, MemberVO memberVO,HttpSession session)throws Exception{
-		
+
 
 		int result  = memberService.setPasswordUpdate(memberVO,session);
-		
+
 		commonVO.setMsg("비밀번호를 변경할 수 없습니다.");
 		commonVO.setUrl("/member/security");
 		commonVO.setTextMsg("다시 확인해주세요.");
@@ -232,7 +232,7 @@ public class MemberController {
 		mv.addObject("commonVO",commonVO);
 		mv.addObject("result", result);
 		mv.setViewName("member/memberAlert");
-		
+
 		return mv;
 	}
 	@GetMapping("beforePwCheck")
@@ -240,70 +240,73 @@ public class MemberController {
 	public boolean getBeforePwCheck(MemberVO memberVO)throws Exception{
 		return memberService.pwCheck(memberVO);
 	}
- 
+	// -------------검증------------------------------------------
 	@GetMapping("idDuplicateCheck")
 	@ResponseBody
 	public boolean idDuplicateCheck(MemberVO memberVO)throws Exception{
-		
+
 		boolean check = memberService.joinCheck(memberVO);
 
 		return check;
-		
+
 	}
 	@GetMapping("idDuplicateCheckAccount")
 	@ResponseBody
 	public boolean idDuplicateCheckAccount(MemberVO memberVO)throws Exception{
-		
+
 		boolean check = memberService.idDuplicateCheck(memberVO);
 
 		return check;
-		
+
 	}
-	 
+
 
 	@PostMapping("statusUpdate")
 	public ModelAndView employeeStatusUpdate(ModelAndView mv,MemberVO memberVO,EmployeeStatusVO employeeStatusVO,HttpSession session,String timeStatus,WorkTimeVO workTimeVO)throws Exception{
 		employeeStatusVO.setStatus(timeStatus);
 		int result =  memberService.setStatusUpdate(memberVO, employeeStatusVO,workTimeVO, session);
-		
+
 		mv.setViewName("redirect:/");
 		return mv;
 	}
 	@PostMapping("testStatusUp")
 	public void testStatusUp(ModelAndView mv,MemberVO memberVO, HttpSession session, EmployeeStatusVO employeeStatusVO) throws Exception{
 		int result = employeeService.testTimeStempInsert(memberVO, employeeStatusVO, session);
-		
+
 	}
 	@GetMapping("statusList")
 	public ModelAndView getStatusList(ModelAndView mv,MemberVO memberVO, HttpSession session, EmployeeStatusVO employeeStatusVO,WorkTimeVO workTimeVO)throws Exception{
-		
-		 
-		 
+
+		//필요한 파라미터
+		//1.내정보
+
 		memberVO = memberService.getMemberProfile(memberVO, session);
 		mv.addObject("memberVO",memberVO);
-		 
+		//2. 지금 현재 근무상태
 		employeeStatusVO =  memberService.getEmployeeStatus(session);
 		mv.addObject("employeeVO", employeeStatusVO);
-		 
+		// 2-1 근무상태 버튼
 		List<String> ar = memberService.getEmployeeStatusBtn(employeeStatusVO, session);
 		if(ar!=null&&ar.size()>0) {
-			
+
 			mv.addObject("btns",ar);
 		}
 		mv.setViewName("member/statusList");
-		
-//		if(employeeStatusVO==null) {
-//			return mv;
-//		}
+
+		//		if(employeeStatusVO==null) {
+		//			return mv;
+		//		}
+		//3. 총 근무 내역
 		List<EmployeeStatusVO> employeeStatusVOs = memberService.getEmployeeStatusList(employeeStatusVO, session);
-		 
+		//		mv.addObject("employeeStatusVOs", employeeStatusVOs);   4번의 list에 있음 사실상 3번은 4번에 추가하여 없어도됨
+		//  3-1 근무 내역이 있는 년도
 		List<String> years = memberService.getEmployeeStatusYears(employeeStatusVOs);
 		mv.addObject("years",years);
-		
-		 
+
+		//4. 근무 내역의 총 시간 및 필요한 시간,
 		List<WorkTimeStatusVO> workTimeStatusVOs =  memberService.getWorkTimeStatusTotal(workTimeVO,employeeStatusVO, session);
 		mv.addObject("workTimeStatusVOs",workTimeStatusVOs);
-		
+
 		return mv;
 	}
 	@GetMapping("testData")
@@ -313,8 +316,8 @@ public class MemberController {
 			EmployeeStatusVO employeeStatusVO = new EmployeeStatusVO();
 			employeeStatusVO.setMemberId(memberVO.getId());
 			LocalDate localDate = LocalDate.of(2023, 4, i);
-			
-			
+
+
 			Date date = Util4calen.setLocalDateToDate(localDate);
 			if(date.getDay()==0||date.getDay()==6) {
 				continue;
@@ -322,7 +325,7 @@ public class MemberController {
 			employeeStatusVO.setReg(date);
 			Time startTime = new Time(9, 0, 0);
 			Time finishTime = new Time(18, 0, 0);
-			
+
 			employeeStatusVO.setOnTime(Util4calen.getStatusTime(startTime, date));
 			employeeStatusVO.setOffTime(Util4calen.getStatusTime(finishTime, date));
 			employeeStatusVO.setStatus("퇴근");
