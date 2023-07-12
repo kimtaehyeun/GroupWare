@@ -10,17 +10,17 @@ function getClock() {
 
     now.getTime
 
-
+    
  
     const year = now.getFullYear();
-    const month = now.getMonth();
+    const month = (now.getMonth()+1);
     const date = now.getDate();
     const hours = String(now.getHours()).padStart(2,"0");
     const minutes = String(now.getMinutes()).padStart(2,"0");
     const seconds = String(now.getSeconds()).padStart(2,"0");
 
     
-    $("#timeStemp").find("#month").text(year+"년 "+month+"월 "+date+"일")
+    // $("#timeStemp").find("#month").text(year+"년 "+month+"월 "+date+"일")
     // $("#timeStemp").find("#date").text(hours+":"+minutes+":"+seconds)
     $("#timeStemp2").children("#month").text(year+"년 "+month+"월 "+date+"일")
     $("#timeStemp2").children("#date").text(hours+":"+minutes+":"+seconds)
