@@ -183,13 +183,13 @@
       <img src="src/main/resources/static/gif/user_statusChange_2.gif">
 
     - 외근
-      - ###### 사원의 퇴근시간으로 입력
-      - ###### 예) 퇴근시간이 오후6시 로 되어있는 사원
+      ###### 사원의 퇴근시간으로 입력
+      ###### 예) 퇴근시간이 오후6시 로 되어있는 사원
       <img src="src/main/resources/static/gif/user_statusChange_1.gif">
 
     - 퇴근
-      - ###### 사원마다 퇴근시간이 다름(교대근무)
-        ###### 예) 근무시간이 오전9시 ~ 오후4시 로 되어있는 사원
+      ###### 사원마다 퇴근시간이 다름(교대근무)
+      ###### 예) 근무시간이 오전9시 ~ 오후4시 로 되어있는 사원
       <img src="src/main/resources/static/gif/user_statusChange_3.gif">
   
   - 연차
