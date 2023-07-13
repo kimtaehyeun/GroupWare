@@ -48,7 +48,7 @@
 >
 > **사용 언어:** JAVA
 > 
-> **프레임 워크:** Spring Framework
+> **프레임 워크:** Spring Boot Framework
 
 ## 팀 역할 분배
 > **팀장:** 이승엽
@@ -57,20 +57,20 @@
 > 
 > 실시간 알림 : QNA 게시판 댓글, 결재 알림 전송
 >
-> 사이드 바 : 사용자 페이지 사이드 바 ( 결재 관련 ) , 관리자 페이지 사이드 바 ( 전체 )
 
 > **팀원:** 정상구
 >
 > 게시판 관리 : 공지사항 게시판, QNA 게시판, QNA 댓글
 >
-> Top Bar : 사용자 페이지 Top Bar
 >
 
 
 > **팀원:** 김태현
 >
-> 회원 관리 : 회원 가입, 회원 직책 관리( 관리자 ), 회원 부서 관리( 관리자 ), 근태 관리
-> 메인 페이지 디자인 수정
+> 회원 관리 : 회원 정보 관리( 관리자 ), 부서 및 직책 관리( 관리자 ), 근태 관리, 연차 관리
+> 
+> 메인 페이지 디자인(tobBar, sideBar 등)
+> 
 
 > **팀원:** 이규원
 >
@@ -97,15 +97,28 @@
 |**DB**|`AWS RDS`, `Docker`, `MariaDB`|
 
 ## 기능구현
-### 1. 관리자 페이지
-  ####   1. 관리자 페이지는 admin 계정만 접근 가능
+### 1. 관리자 기능
+  ####   로그인
   
   <img src="src/main/resources/static/gif/admin1_1.gif">
 
-  ####   2. 부서와 직책 관리 기능
-  ##  2-1. 부서추가/삭제
-  <img src="src/main/resources/static/gif/admin_department_job.gif">
-      
+  ####   부서와 직책 관리 기능
+  - 직책 추가
+  <img src="src/main/resources/static/gif/admin_jobAdd.gif">
+
+  - 직책 삭제
+  <img src="src/main/resources/static/gif/admin_jobDelete.gif">
+
+  - 부서 추가
+  <img src="src/main/resources/static/gif/admin_departmentAdd.gif">
+
+  - 부서 삭제
+  <img src="src/main/resources/static/gif/admin_departmentDrop.gif">
+
+  - 부서 레벨수정
+    - 하위부서 및 상위부서 수정
+  <img src="src/main/resources/static/gif/admin_departmentLevelChange.gif">
+  
   ####   1-3. 결재 카테고리 관리 기능
   - 결재 카테고리 생성
   <img src="src/main/resources/static/gif/admin_addCategory.gif">
