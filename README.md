@@ -32,7 +32,7 @@
 
 <p align="center">
   <br>
-   <img src="src/main/resources/static/images/login/logo.svg" width="500" height="200"> 
+   <img src="src/main/resources/static/images/ERD.png" width="500" height="200"> 
   <br>
 </p>
 
