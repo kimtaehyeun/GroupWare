@@ -97,12 +97,30 @@
 |**DB**|`AWS RDS`, `Docker`, `MariaDB`|
 
 ## 기능구현
-### 1. 관리자 기능
-  ####   로그인
+### 관리자 기능
+  ####  1. 로그인
   
   <img src="src/main/resources/static/gif/admin1_1.gif">
 
-  ####   부서와 직책 관리 기능
+  ####  2. 회원 관리 기능
+  - 회원 가입
+    ###### 관리자가 회원생성 후 사원에게 분배
+    <img src="src/main/resources/static/gif/admin_create_userInfo.gif">  
+
+  - 회원 수정
+    - 회원 정보
+      <img src="src/main/resources/static/gif/admin_memberUpdate.gif">
+    
+    - 회원 보안
+      <img src="src/main/resources/static/gif/admin_SecurityUpdate.gif">
+    
+    - 회원 근태
+      <img src="src/main/resources/static/gif/admin_StatusUpdate.gif">
+    
+    - 회원 연차
+      <img src="src/main/resources/static/gif/admin_leaveRecodeUpdate.gif">
+
+  ####  3. 부서와 직책 관리 기능
   - 직책 추가
     <img src="src/main/resources/static/gif/admin_jobAdd.gif">
 
@@ -116,10 +134,14 @@
     <img src="src/main/resources/static/gif/admin_departmentDrop.gif">
 
   - 부서 레벨수정
-    - 하위부서 및 상위부서 수정
+    ###### * 하위부서 및 상위부서 수정
     <img src="src/main/resources/static/gif/admin_departmentLevelChange.gif">
+    
+  - 부서 담당자 변경
+    <img src="src/main/resources/static/gif/admin_managerChange.gif">
+
   
-  ####   1-3. 결재 카테고리 관리 기능
+  ####   4. 결재 카테고리 관리 기능
   - 결재 카테고리 생성
   <img src="src/main/resources/static/gif/admin_addCategory.gif">
         
@@ -129,7 +151,7 @@
     - 각 카테고리의 결재자는 최소 한명 이상이 필요함
   <img src="src/main/resources/static/gif/admin_updateCategory.gif">
         
-  ####   1-4. 게시판 관리 기능
+  ####   5. 게시판 관리 기능
   - 모든 게시판 글 및 댓글은 관리자가 삭제 가능
  
   - 공지사항 게시판 관리
@@ -140,47 +162,67 @@
   - QNA 게시판 관리
   <img src="src/main/resources/static/gif/admin_QNA.gif">
   
-  ####   1-5. 회원(사원) 관리 기능
-  - 새로운 사원을 생성
-  <img src="src/main/resources/static/gif/admin_create_userInfo.gif">
-  
-  - 전체 사원의 목록을 확인하고 수정
-  <img src="src/main/resources/static/gif/admin_update_userInfo.gif">
+ 
+### 사용자 기능
+  ####   1. 마이페이지
+  - 개인정보(아이디, 이름 등) 수정
+    <img src="src/main/resources/static/gif/user_updateInfo.gif">
+    
+  - 프로필 수정
+    <img src="src/main/resources/static/gif/user_changeProfile.gif">
+    
+  - 비밀번호 수정
+    <img src="src/main/resources/static/gif/user_updatePW.gif">
 
+  ####   2. 근태 및 연차 관리 기능
+  - 근태
+    - 출근
+      <img src="src/main/resources/static/gif/user_goWork.gif">
 
-### 2. 사용자 페이지
-  ####   1_1. 개인정보 수정 기능
-  - 마이페이지 개인정보(아이디, 이름 등) 수정
-  <img src="src/main/resources/static/gif/user_updateInfo.gif">
-  
-  - 보안관리 페이지 비밀번호 수정
-  <img src="src/main/resources/static/gif/user_updatePW.gif">
+    - 조퇴
+      <img src="src/main/resources/static/gif/user_statusChange_2.gif">
 
-  ####   1-2. 근태 및 연차 관리 기능
-  - 근태 및 연차 확인 ( 수정 필요 )
-  <img src="src/main/resources/static/gif/user_attendence.gif">
+    - 외근
+      - ###### 사원의 퇴근시간으로 입력
+      - ###### 예) 퇴근시간이 오후6시 로 되어있는 사원
+      <img src="src/main/resources/static/gif/user_statusChange_1.gif">
+
+    - 퇴근
+      - ###### 사원마다 퇴근시간이 다름(교대근무)
+        ###### 예) 근무시간이 오전9시 ~ 오후4시 로 되어있는 사원
+      <img src="src/main/resources/static/gif/user_statusChange_3.gif">
   
-  ####   1_3. 전자문서 결재 신청 기능
+  - 연차
+    <img src="src/main/resources/static/gif/user_leaveRecode.gif">
+
+  ####   3. 회원 및 부서 리스트
+  - 회원 목록
+    <img src="src/main/resources/static/gif/user_memberSearch.gif">
+
+  - 부서 목록
+    <img src="src/main/resources/static/gif/user_departmentSearch.gif">
+    
+  ####   4. 전자문서 결재 신청 기능
   - 전자문서 결재 신청
   <img src="src/main/resources/static/gif/user_approval_create.gif">
 
-  ####   1_4. 전자문서 결재 기능
+  ####   5. 전자문서 결재 기능
   - 전자문서 결재 (승인, 거부)
   (결재 문서 리스트가 나오지않는 오류 있음)
 
-  ####   1_5. 전자문서 결재 여부 확인 기능
+  ####   6. 전자문서 결재 여부 확인 기능
   - 신청한 전자문서 결재 여부 확인
   (결재 문서 리스트가 나오지않는 오류 있음)
 
-  ####   1_6. 게시판 기능
+  ####   7. 게시판 기능
   - 관리자 페이지의 게시판 관리 기능과 동일
  
-  ####   1_7. 일정 기능
+  ####   8. 일정 기능
   - 일정 관리 및 수정 기능
   - 일정 확인 기능
   (추가 캡쳐 따로 해야함)
   
-  ####   1_8. 실시간 알림 기능
+  ####   9. 실시간 알림 기능
   - 나에게 도착한 실시간 문서 결재 요청이 있을 경우 &  QNA 작성 글 또는 댓글에 댓글이 달릴 경우
 
     - 다른 계정으로 댓글 작성시 알림이 실시간으로 전송
