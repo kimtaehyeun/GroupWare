@@ -104,20 +104,20 @@
 
   ####   부서와 직책 관리 기능
   - 직책 추가
-  <img src="src/main/resources/static/gif/admin_jobAdd.gif">
+    <img src="src/main/resources/static/gif/admin_jobAdd.gif">
 
   - 직책 삭제
-  <img src="src/main/resources/static/gif/admin_jobDelete.gif">
+    <img src="src/main/resources/static/gif/admin_jobDelete.gif">
 
   - 부서 추가
-  <img src="src/main/resources/static/gif/admin_departmentAdd.gif">
+    <img src="src/main/resources/static/gif/admin_departmentAdd.gif">
 
   - 부서 삭제
-  <img src="src/main/resources/static/gif/admin_departmentDrop.gif">
+    <img src="src/main/resources/static/gif/admin_departmentDrop.gif">
 
   - 부서 레벨수정
     - 하위부서 및 상위부서 수정
-  <img src="src/main/resources/static/gif/admin_departmentLevelChange.gif">
+    <img src="src/main/resources/static/gif/admin_departmentLevelChange.gif">
   
   ####   1-3. 결재 카테고리 관리 기능
   - 결재 카테고리 생성
