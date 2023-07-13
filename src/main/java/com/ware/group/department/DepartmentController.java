@@ -85,6 +85,13 @@ public class DepartmentController {
 		mv.addObject("memberVO", memberVO);
 		mv.addObject("departmentVOs", ar);
 		mv.addObject("vo", departmentVO);
+		//managerNum
+		if(departmentVO.getManager()!=null) {
+			MemberVO managerVO = new MemberVO();
+			managerVO.setId(departmentVO.getManager());
+			managerVO = memberService.getMemberDetail(managerVO);
+			mv.addObject("managerVO", managerVO);
+		}
 		mv.setViewName("department/detail");
 		return mv;
 	}
