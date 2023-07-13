@@ -96,7 +96,6 @@ public class ManagerController {
 			mv.addObject("result", result);
 			mv.setViewName("member/memberAlert");
 
-		mv.setViewName("common/alert");
 		return mv;
 	}
 	//4. leaveRecode DATE변경

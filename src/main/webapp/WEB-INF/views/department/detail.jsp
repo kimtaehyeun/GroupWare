@@ -85,7 +85,7 @@
 												<div class="ms-4">
 													<div class="small text-Secondary">담당자</div>
 													<c:if test="${not empty vo.manager }">
-														<div class="text-dark h4">${vo.manager}</div>
+														<div class="text-dark h4">${managerVO.name}</div>
 													</c:if>
 													<c:if test="${empty vo.manager}">
 														<div class="text-dark h4">없음</div>

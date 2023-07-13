@@ -46,10 +46,10 @@
 									<ul>
 										<li>사원번호 : ${memberVO.employeeId}</li>
 										<li>아이디 : ${memberVO.accountId }</li>
-										<c:if test="${not empty memberVo.departmentVO.name }">
+										<c:if test="${not empty memberVO.departmentVO.name }">
 											<li>부서명 : ${memberVO.departmentVO.name }</li>
 										</c:if>
-										<c:if test="${empty memberVo.departmentVO.name }">
+										<c:if test="${empty memberVO.departmentVO.name }">
 											<li>부서없음</li>
 										</c:if>
 
