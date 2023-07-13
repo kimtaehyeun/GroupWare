@@ -180,17 +180,18 @@
       <img src="src/main/resources/static/gif/user_goWork.gif">
 
     - 조퇴
-      <img src="src/main/resources/static/gif/user_statusChange_2.gif">
+      <img src="src/main/resources/static/gif/user_statusChange2.gif">
 
     - 외근
       ###### 사원의 퇴근시간으로 입력
       ###### 예) 퇴근시간이 오후6시 로 되어있는 사원
-      <img src="src/main/resources/static/gif/user_statusChange_1.gif">
-
+      <img src="src/main/resources/static/gif/user_statusChange1.gif">
+      ###### 근태 목록에서도 외근버튼 활성화
+      <img src="src/main/resources/static/gif/user_StatusList_Change.gif">
     - 퇴근
       ###### 사원마다 퇴근시간이 다름(교대근무)
       ###### 예) 근무시간이 오전9시 ~ 오후4시 로 되어있는 사원
-      <img src="src/main/resources/static/gif/user_statusChange_3.gif">
+      <img src="src/main/resources/static/gif/user_statusChange3.gif">
   
   - 연차
     <img src="src/main/resources/static/gif/user_leaveRecode.gif">
