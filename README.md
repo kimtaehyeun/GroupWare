@@ -30,11 +30,6 @@
 
 ## 프로젝트 개요
 
-<p align="center">
-  <br>
-   <img src="src/main/resources/static/images/ERD.png" > 
-  <br>
-</p>
 
 > **프로젝트:** 그룹웨어
 >
@@ -49,6 +44,15 @@
 > **사용 언어:** JAVA
 > 
 > **프레임 워크:** Spring Boot Framework
+
+## DB설계
+
+<p align="center">
+  <br>
+   <img src="src/main/resources/static/images/ERD.png" > 
+  <br>
+</p>
+
 
 ## 팀 역할 분배
 > **팀장:** 이승엽
